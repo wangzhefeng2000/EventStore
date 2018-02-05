@@ -99,6 +99,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture]
+    [Ignore("Unused Queued Handler")]
     public class when_stopping_queued_handler_mres_should : when_stopping_queued_handler
     {
         public when_stopping_queued_handler_mres_should()
@@ -108,6 +109,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture]
+    [Ignore("Unused Queued Handler")]
     public class when_stopping_queued_handler_autoreset : when_stopping_queued_handler
     {
         public when_stopping_queued_handler_autoreset()

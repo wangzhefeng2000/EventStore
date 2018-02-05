@@ -87,6 +87,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture]
+    [Ignore("Unused Queued Handler")]
     class when_using_single_consumer_queue_multiple_producers : when_using_single_consumer_queue
     {
         public when_using_single_consumer_queue_multiple_producers() : base(size => new MPSCMessageQueue(size), 2)
@@ -95,6 +96,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture]
+    [Ignore("Unused Queued Handler")]
     class when_using_single_consumer_queue_single_producers : when_using_single_consumer_queue
     {
         public when_using_single_consumer_queue_single_producers() : base(size => new SPSCMessageQueue(size), 1)

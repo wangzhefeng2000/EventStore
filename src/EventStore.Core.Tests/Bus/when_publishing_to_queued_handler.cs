@@ -88,6 +88,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture, Category("LongRunning")]
+    [Ignore("Unused Queued Handler")]
     public class when_publishing_to_queued_handler_mres : when_publishing_to_queued_handler
     {
         public when_publishing_to_queued_handler_mres()
@@ -97,6 +98,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture, Category("LongRunning")]
+    [Ignore("Unused Queued Handler")]
     public class when_publishing_to_queued_handler_autoreset : when_publishing_to_queued_handler
     {
         public when_publishing_to_queued_handler_autoreset()

@@ -50,6 +50,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture, Category("bus")]
+    [Ignore("Unused Queued Handler")]
     public class when_consumer_throws_mres : when_consumer_throws
     {
         public when_consumer_throws_mres()
@@ -59,6 +60,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture, Category("bus")]
+    [Ignore("Unused Queued Handler")]
     public class when_consumer_throws_autoreset : when_consumer_throws
     {
         public when_consumer_throws_autoreset()

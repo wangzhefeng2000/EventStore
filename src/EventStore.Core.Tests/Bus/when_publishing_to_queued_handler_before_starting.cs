@@ -79,6 +79,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture]
+    [Ignore("Unused Queued Handler")]
     public class when_publishing_to_queued_handler_mres_before_starting :
         when_publishing_to_queued_handler_before_starting
     {
@@ -89,6 +90,7 @@ namespace EventStore.Core.Tests.Bus
     }
 
     [TestFixture]
+    [Ignore("Unused Queued Handler")]
     public class when_publishing_to_queued_handler_autoreset_before_starting :
         when_publishing_to_queued_handler_before_starting
     {
