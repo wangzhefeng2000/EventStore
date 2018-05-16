@@ -103,3 +103,4 @@ test_results
 
 # Visual Studio Code
 src/.vscode/
+.vscode
