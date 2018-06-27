@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -109,7 +109,7 @@ namespace EventStore.Core.Bus
 
                         var elapsed = DateTime.UtcNow - start;
                         if (elapsed > _slowMsgThreshold)
-                            Log.Trace("SLOW BUS MSG [{0}]: {1} - {2}ms. Handler: {3}.", Name, message.GetType().Name, (int)elapsed.TotalMilliseconds, handler.HandlerName);
+                            Log.Trace("SLOW BUS MSG [{bus}]: {message} - {elapsed}ms. Handler: {handler}.", Name, message.GetType().Name, (int)elapsed.TotalMilliseconds, handler.HandlerName);
                     }
                     else
                     {
@@ -226,7 +226,7 @@ namespace EventStore.Core.Bus
                     var elapsed = DateTime.UtcNow - start;
                     if (elapsed > _slowMsgThreshold)
                     {
-                        Log.Trace("SLOW BUS MSG [{0}]: {1} - {2}ms. Handler: {3}.",
+                        Log.Trace("SLOW BUS MSG [{bus}]: {message} - {elapsed}ms. Handler: {handler}.",
                                   Name, message.GetType().Name, (int) elapsed.TotalMilliseconds, handler.HandlerName);
                     }
                 }
@@ -324,10 +324,10 @@ namespace EventStore.Core.Bus
                     var elapsed = DateTime.UtcNow - start;
                     if (elapsed > _slowMsgThreshold)
                     {
-                        Log.Trace("SLOW BUS MSG [{0}]: {1} - {2}ms. Handler: {3}.",
+                        Log.Trace("SLOW BUS MSG [{bus}]: {message} - {elapsed}ms. Handler: {handler}.",
                                   Name, message.GetType().Name, (int)elapsed.TotalMilliseconds, handler.HandlerName);
                         if (elapsed > QueuedHandler.VerySlowMsgThreshold && !(message is SystemMessage.SystemInit))
-                            Log.Error("---!!! VERY SLOW BUS MSG [{0}]: {1} - {2}ms. Handler: {3}.",
+                            Log.Error("---!!! VERY SLOW BUS MSG [{bus}]: {message} - {elapsed}ms. Handler: {handler}.",
                                       Name, message.GetType().Name, (int)elapsed.TotalMilliseconds, handler.HandlerName);
                     }
                 }

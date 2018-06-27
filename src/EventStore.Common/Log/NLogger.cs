@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using EventStore.Common.Utils;
@@ -20,6 +20,12 @@ namespace EventStore.Common.Log
         {
             return Runtime.IsMono;
         }
+
+        [ConditionMethod("is-structured")]
+        public static bool IsStructured()
+        {
+            return LogManager._isStructured;
+        }
     }
 
     public class NLogger : ILogger
@@ -38,7 +44,7 @@ namespace EventStore.Common.Log
 
         public void Fatal(string format, params object[] args)
         {
-            _logger.Fatal(format, args);
+            _logger.Fatal(format, args); 
         }
 
         public void Error(string format, params object[] args)
@@ -53,7 +59,7 @@ namespace EventStore.Common.Log
 
         public void Debug(string format, params object[] args)
         {
-            _logger.Debug(format, args);
+            _logger.Debug(format, args); 
         }
 
         public void Warn(string format, params object[] args)
@@ -64,31 +70,32 @@ namespace EventStore.Common.Log
         public void Trace(string format, params object[] args)
         {
             _logger.Trace(format, args);
+            
         }
 
         public void FatalException(Exception exc, string format, params object[] args)
         {
-            _logger.FatalException(string.Format(format, args), exc);
+            _logger.Fatal(exc,format,args);
         }
 
         public void ErrorException(Exception exc, string format, params object[] args)
-        {
-            _logger.ErrorException(string.Format(format, args), exc);
+        {   
+            _logger.Error(exc,format,args);
         }
 
         public void InfoException(Exception exc, string format, params object[] args)
         {
-            _logger.InfoException(string.Format(format, args), exc);
+            _logger.Info(exc,format,args);
         }
 
         public void DebugException(Exception exc, string format, params object[] args)
         {
-            _logger.DebugException(string.Format(format, args), exc);
+           _logger.Debug(exc,format, args);
         }
 
         public void TraceException(Exception exc, string format, params object[] args)
         {
-            _logger.TraceException(string.Format(format, args), exc);
+            _logger.Trace(exc,format,args);
         }
 
         public static void FlushLog(TimeSpan? maxTimeToWait = null)

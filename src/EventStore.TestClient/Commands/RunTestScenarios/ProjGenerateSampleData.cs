@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2012, Event Store LLP
+// Copyright (c) 2012, Event Store LLP
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without
@@ -117,10 +117,10 @@ namespace EventStore.TestClient.Commands.RunTestScenarios
                                                                                        {
                                                                                            Log.Info("EXCEPTION");
                                                                                        }
-                                                                                       Log.Info("Data written for iteration {0}.", GetIterationCode();})*/);
+                                                                                       Log.Info("Data written for iteration {iteration}.", GetIterationCode();})*/);
             
 //            return task;
-            return task.ContinueWith(x => Log.Info("Data written for iteration {0}.", GetIterationCode()));
+            return task.ContinueWith(x => Log.Info("Data written for iteration {iteration}.", GetIterationCode()));
         }
     }
 }
