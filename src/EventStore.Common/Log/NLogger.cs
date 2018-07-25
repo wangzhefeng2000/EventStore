@@ -70,7 +70,6 @@ namespace EventStore.Common.Log
         public void Trace(string format, params object[] args)
         {
             _logger.Trace(format, args);
-            
         }
 
         public void FatalException(Exception exc, string format, params object[] args)
@@ -79,7 +78,7 @@ namespace EventStore.Common.Log
         }
 
         public void ErrorException(Exception exc, string format, params object[] args)
-        {   
+        {
             _logger.Error(exc,format,args);
         }
 
