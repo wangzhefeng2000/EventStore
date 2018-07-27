@@ -20,7 +20,8 @@ namespace EventStore.Core.Tests
         {
             Console.WriteLine("Initializing tests (setting console loggers)...");
             
-            ConfigurationItemFactory.Default.ValueFormatter = new ESValueFormatter(false);
+            var originalFormatter = NLog.Config.ConfigurationItemFactory.Default.ValueFormatter;
+            ConfigurationItemFactory.Default.ValueFormatter = new NLogValueFormatter(originalFormatter, false);
             ConsoleTarget consoleTarget = new ConsoleTarget("testconsole");
             var config = new NLog.Config.LoggingConfiguration();        
             config.AddRule(LogLevel.Trace, LogLevel.Fatal, consoleTarget);
