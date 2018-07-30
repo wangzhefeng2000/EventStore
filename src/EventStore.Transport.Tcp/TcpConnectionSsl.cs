@@ -267,16 +267,16 @@ namespace EventStore.Transport.Tcp
         private void DisplaySslStreamInfo(SslStream stream)
         {
             Log.Info("[S{0}, L{1}]", RemoteEndPoint, LocalEndPoint);
-            Log.Info("Cipher: {0} strength {1}", stream.CipherAlgorithm, stream.CipherStrength);
-            Log.Info("Hash: {0} strength {1}", stream.HashAlgorithm, stream.HashStrength);
-            Log.Info("Key exchange: {0} strength {1}", stream.KeyExchangeAlgorithm, stream.KeyExchangeStrength);
+            Log.Info("Cipher: {0}", stream.CipherAlgorithm);
+            Log.Info("Hash: {0}", stream.HashAlgorithm);
+            Log.Info("Key exchange: {0}", stream.KeyExchangeAlgorithm);
             Log.Info("Protocol: {0}", stream.SslProtocol);
             Log.Info("Is authenticated: {0} as server? {1}", stream.IsAuthenticated, stream.IsServer);
             Log.Info("IsSigned: {0}", stream.IsSigned);
             Log.Info("Is Encrypted: {0}", stream.IsEncrypted);
             Log.Info("Can read: {0}, write {1}", stream.CanRead, stream.CanWrite);
             Log.Info("Can timeout: {0}", stream.CanTimeout);
-            Log.Info("Certificate revocation list checked: {0}", stream.CheckCertRevocationStatus);
+            //Log.Info("Certificate revocation list checked: {0}", stream.CheckCertRevocationStatus);
 
             X509Certificate localCert = stream.LocalCertificate;
             if (localCert != null)
