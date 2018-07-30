@@ -136,6 +136,7 @@ mkbundle -c \
     NLog.dll \
     protobuf-net.dll \
     Mono.Security.dll \
+    -L /usr/lib/mono/4.5/ \
     --static --deps \
     --config $MONOCONFIG \
     --machine-config $MACHINECONFIG
@@ -180,6 +181,7 @@ mkbundle -c \
     Newtonsoft.Json.dll \
     NLog.dll \
     protobuf-net.dll \
+    -L /usr/lib/mono/4.5/ \
     --static --deps \
     --config $MONOCONFIG \
     --machine-config $MACHINECONFIG

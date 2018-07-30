@@ -143,6 +143,7 @@ mkbundle -c -o clusternode.c -oo clusternode.a \
 	HdrHistogram.NET.dll \
 	Newtonsoft.Json.dll \
 	NLog.dll protobuf-net.dll \
+	-L /usr/lib/mono/4.5/ \
 	--static --deps --config $MONOCONFIG --machine-config $MACHINECONFIG
 
 # mkbundle appears to be doing it wrong, though maybe there's something I'm not seeing.
@@ -209,6 +210,7 @@ mkbundle -c \
 	Newtonsoft.Json.dll \
 	NLog.dll \
 	protobuf-net.dll \
+	-L /usr/lib/mono/4.5/ \
 	--static --deps --config $MONOCONFIG --machine-config $MACHINECONFIG
 
 # mkbundle appears to be doing it wrong, though maybe there's something I'm not seeing.
