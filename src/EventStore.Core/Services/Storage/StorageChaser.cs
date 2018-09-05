@@ -14,6 +14,7 @@ using EventStore.Core.TransactionLog.Checkpoint;
 using EventStore.Core.TransactionLog.LogRecords;
 using EventStore.Core.Services.Histograms;
 using EventStore.Core.Util;
+using System.Threading.Tasks;
 
 namespace EventStore.Core.Services.Storage
 {
@@ -48,8 +49,15 @@ namespace EventStore.Core.Services.Storage
 
         private readonly List<PrepareLogRecord> _transaction = new List<PrepareLogRecord>();
         private bool _commitsAfterEof;
+<<<<<<< HEAD
         private const string ChaserWaitHistogram = "chaser-wait";
         private const string ChaserFlushHistogram = "chaser-flush";
+=======
+        private const string _chaserWaitHistogram = "chaser-wait";
+        private const string _chaserFlushHistogram = "chaser-flush";
+        private readonly TaskCompletionSource<object> _tcs = new TaskCompletionSource<object>();
+        public Task Task { get {return _tcs.Task;} }
+>>>>>>> 67c2417... Monitor ClusterVNode queue threads for failures and throw exceptions from the main thread in MiniNode (DEBUG builds only)
 
         public StorageChaser(IPublisher masterBus,
             ICheckpoint writerCheckpoint,
@@ -88,11 +96,11 @@ namespace EventStore.Core.Services.Storage
 
         private void ChaseTransactionLog()
         {
-            _queueStats.Start();
-            QueueMonitor.Default.Register(this);
-
             try
             {
+                _queueStats.Start();
+                QueueMonitor.Default.Register(this);
+
                 _writerCheckpoint.Flushed += OnWriterFlushed;
 
                 _chaser.Open();
@@ -117,6 +125,7 @@ namespace EventStore.Core.Services.Storage
                 Log.FatalException(exc, "Error in StorageChaser. Terminating...");
                 _queueStats.EnterIdle();
                 _queueStats.ProcessingStarted<FaultedChaserState>(0);
+                _tcs.TrySetException(exc);
                 Application.Exit(ExitCode.Error, "Error in StorageChaser. Terminating...\nError: " + exc.Message);
                 while (!_stop)
                 {
